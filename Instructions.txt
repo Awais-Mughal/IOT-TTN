@@ -1,0 +1,9 @@
+iotlab-experiment submit -n "ttn-sensors" -d 120 -l 1,archi=st-lrwan1:sx1276+site=saclay
+
+iotlab-experiment wait --timeout 30 --cancel-on-timeout
+
+make IOTLAB_NODE=auto -C riot/lorawan/ttn-sensors term
+
+make IOTLAB_NODE=auto flash-only
+
+iotlab-experiment stop
